@@ -1,28 +1,26 @@
-const RecipeCard = ({ recipe }) => {
-    const {
-        strMeal,
-        strCategory,
-        strMealThumb,
-        strArea,
-        handleChange,
-    } = recipe;
-    
-    return (
-        <div className="card hover:shadow-lg rounded-md bg-slate-200 m-3" onClick={handleChange}>
-           <img
-                src={strMealThumb}
-                alt={strMeal}
-                className="card-image cursor-pointer w-full size-60 sm:h-48 object-cover rounded" 
-                
-            /> 
-            <div className="card-info cursor-pointer text-center pb-5">
-                <h3 className="mt-4 font-bold uppercase"> {strMeal}</h3>
-                <span className="category block tetx-sm text-gray-700">Category : {strCategory}</span>
-                <h2 className="block tetx-sm text-gray-700" >Cuisine : {strArea}</h2>
-            </div>
 
-        </div>
-    )
-};
+
+const RecipeCard = ({ recipe, onShowDetails }) => (
+    
+  <div className="bg-white rounded-lg shadow-md overflow-hidden p-4 mb-4">
+    <img
+      src={recipe.strMealThumb}
+      alt={recipe.strMeal}
+      className="w-full h-40 object-cover rounded-t-lg"
+    />
+    <div className="p-4">
+      <h3 className="text-lg font-bold mb-2">{recipe.strMeal}</h3>
+      <p className="text-gray-700 mb-2">
+        {recipe.strCategory} - {recipe.strArea}
+      </p>
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+        onClick={() => onShowDetails(recipe.idMeal)}
+      >
+        View Details
+      </button>
+    </div>
+  </div>
+);
 
 export default RecipeCard;

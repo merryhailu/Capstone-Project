@@ -1,13 +1,21 @@
 
 
 const RecipeDetail = ({ recipe }) => {
-  if (!recipe) return null;
+  const {
+      strMeal,
+      strInstructions,
+      strMealThumb,
+      strYoutube,
+  } = recipe; 
 
   return (
     <div>
       <h2>Recipe Detail</h2>
-      <h2>Title: {recipe.strMeal}</h2>
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+      <h2>Title: {strMeal}</h2>
+      <img 
+      src={strMealThumb} 
+      alt={strMeal} />
+      
       <h3>Ingredients</h3>
       <ul>
         {Object.keys(recipe)
@@ -17,15 +25,14 @@ const RecipeDetail = ({ recipe }) => {
           ))}
       </ul>
       <h3>Instructions</h3>
-      <p>{recipe.strInstructions}</p>
-      {recipe.strYoutube && (
+      <p>{strInstructions}</p>
+      {strYoutube && (
         <div>
           <h3>Video</h3>
           <iframe
             width="560"
             height="315"
-            src={`https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}`}
-            frameBorder="0"
+            src={`https://www.youtube.com/embed/${strYoutube.split('=')[1]}`}
             allowFullScreen
           ></iframe>
         </div>

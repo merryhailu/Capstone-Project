@@ -1,38 +1,28 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 
-const SearchBar = ({ onSearch, onError }) => {
-  const [query, setQuery] = useState('');
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data.meals) {
-          onSearch(data.meals);
-        } else {
-          onError('No recipes found');
-        }
-      })
-      .catch(error => {
-        onError(error.message);
-      });
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+    setSearchTerm(''); 
   };
 
   return (
-    <div>
+    <form onSubmit={handleSearchSubmit} className="flex mb-4">
       <input
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for a recipe..."
+        placeholder="Search for Recipes ..."
+        className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+      <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white 
+ px-4 py-2 rounded-md">
+        Search
+      </button>
+    </form>
   );
 };
 

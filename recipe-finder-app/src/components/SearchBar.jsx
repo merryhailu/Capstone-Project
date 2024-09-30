@@ -7,10 +7,6 @@ const SearchBar = ({
     setQuery,
 }) => {
 
-
-
-
-    
     return (
         <form onSubmit={handleSubmit} className="text-center">
             <input 

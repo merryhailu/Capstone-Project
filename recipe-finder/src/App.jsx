@@ -1,23 +1,66 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './component/SearchBar';
 import RecipeList from './component/RecipeList';
-import RecipeDetail from './component/RecipeDetail';
-import ErrorMessage from './component/ErrorMessage';
+import RecipeDetails from './component/RecipeDetail';
+import { fetchRecipes } from './api/theMealDBApi';
+
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [error, setError] = useState('');
 
-  const handleSearch = (recipes) => {
-    setRecipes(recipes);
-    setError('');
+  
+  const handleSearch = async (searchTerm) => {
+    try {
+      setIsLoading(true);
+      const data = await fetchRecipes(searchTerm);
+      setRecipes(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+      setError(error.message);
+      setIsLoading(false);
+    }
   };
 
-  const handleError = (message) => {
-    setError(message);
-    setRecipes([]);
+  const handleShowDetails = (recipeId) => {
+    setSelectedRecipe(recipeId);
+    
   };
+
+  return (
+    <Router>
+      <div className="container mx-auto py-8">
+      <div className="bg-slate-400 text-center font-bold text-2xl p-5 my-4">
+      <h1>Recipe Finder</h1>
+      </div>
+        <SearchBar onSearch={handleSearch} />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <RecipeList
+                recipes={recipes}
+                isLoading={isLoading}
+                error={error}
+                onShowDetails={handleShowDetails}
+              />
+            }
+          />
+         
+          <Route path="/recipes/:recipeId" element={<RecipeDetails recipeId={selectedRecipe} />} />
+        
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
 
 //   const addToFavorites = (recipe) => {
 //     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -47,14 +90,18 @@ const App = () => {
 //     .then(data => setRecipes(data.meals));
 // };
 
-  return (
-    <div className="container mx-auto p-4">
-      <SearchBar onSearch={handleSearch} onError={handleError} />
-      {error && <ErrorMessage message={error} />}
-      <RecipeList recipes={recipes} />
-      {selectedRecipe && <RecipeDetail recipe={selectedRecipe} />}
-    </div>
-  );
-};
 
-export default App;
+
+
+
+//   return (
+//     <div className="container mx-auto p-4">
+//       <SearchBar onSearch={handleSearch} onError={handleError} />
+//       {error && <ErrorMessage message={error} />}
+//       <RecipeList recipes={recipes} />
+//       {selectedRecipe && <RecipeDetail recipe={selectedRecipe} />}
+//     </div>
+//   );
+// };
+
+// export default App;

@@ -72,17 +72,16 @@ function App() {
    
       <div className="recipes grid lg:grid-cols-3 md:grid-cols-2 gap-10 ">
         {recipes ? recipes.map(recipe => (
-        
           <RecipeCard
              key={recipe.idMeal}
              recipe={recipe}
           /> 
         )) : "Not Found!"}
+ </div>
 
+ 
 
-{/* { selectedRecipe && <RecipeDetail recipe={selectedRecipe} />} */}
-
-      </div>
+   
     </div>
     </>
   );
