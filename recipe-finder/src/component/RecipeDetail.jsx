@@ -4,8 +4,8 @@ import { fetchRecipeDetails } from '../api/theMealDBApi';
 
 const RecipeDetail = () => {
   const { recipeId } = useParams();
-  const [recipe, setRecipe] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [recipe, setRecipe] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); 
 
 

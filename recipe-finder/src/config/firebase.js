@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD6UENbyMDRePIDqElImeE4RDkcRxz7Cqs",
+  apiKey: "A",
   authDomain: "recipe-finder-55a9b.firebaseapp.com",
   projectId: "recipe-finder-55a9b",
   storageBucket: "recipe-finder-55a9b.appspot.com",
