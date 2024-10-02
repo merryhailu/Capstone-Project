@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchRecipeDetails } from '../api/theMealDBApi';
 
-const RecipeDetails = () => {
+const RecipeDetail = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const RecipeDetails = () => {
       try {
         setIsLoading(true);
         const data = await fetchRecipeDetails(recipeId);
-        setRecipe(data.meals[0]);
+        setRecipe(data);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching recipe details:', error);
@@ -60,4 +60,4 @@ const RecipeDetails = () => {
   );
 };
 
-export default RecipeDetails;
+export default RecipeDetail;

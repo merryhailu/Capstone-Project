@@ -1,10 +1,10 @@
 
 import RecipeCard from './RecipeCard';
 
-const RecipeList = ({ recipes, onShowDetails }) => {
+const RecipeList = ({recipes, onShowDetails}) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      { recipes ?  recipes.map(recipe => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      { recipes ? recipes.map(recipe => (
         <RecipeCard 
         key={recipe.idMeal} 
         recipe={recipe} 
@@ -16,3 +16,4 @@ const RecipeList = ({ recipes, onShowDetails }) => {
 };
 
 export default RecipeList;
+
