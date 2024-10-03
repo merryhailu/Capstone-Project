@@ -11,7 +11,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
 
   
   const handleSearch = async (searchTerm) => {
@@ -27,11 +27,7 @@ const App = () => {
     }
   };
 
-  const handleShowDetails = (recipeId) => {
-    setSelectedRecipe(recipeId);
-    
-  };
-
+ 
   return (
     <Router>
       <div className="container mx-auto py-8 ">
@@ -47,11 +43,11 @@ const App = () => {
                 recipes={recipes}
                 isLoading={isLoading}
                 error={error}
-                onShowDetails={handleShowDetails}
+           
               />
             }
           />
-          <Route path="/recipes/:recipeId" element={<RecipeDetail recipeId={selectedRecipe} />} />
+          <Route path="/recipes/:recipeId" element={<RecipeDetail recipes={recipes} />} />
         
         </Routes>
       </div>

@@ -1,38 +1,56 @@
+import { data } from 'autoprefixer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchRecipeDetails } from '../api/theMealDBApi';
+import  { useNavigate } from "react-router-dom";
+
 
 const RecipeDetail = () => {
-  const { recipeId } = useParams();
+  const { recipeId,setRecipeId } = useParams();
   const [recipe, setRecipe] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null); 
-
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(null); 
+  const navigate = useNavigate();
+  //const [selectedRecipeId, setSelectedRecipeId] = useState(null);
+  
+  console.log(recipeId);
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        setIsLoading(true);
-        const data = await fetchRecipeDetails(recipeId);
-        setRecipe(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching recipe details:', error);
-        setError(error.message);
-        setIsLoading(false);
-      }
+    const handleViewDetail = (recipeId) => {
+      setRecipeId(recipeId);
+      setRecipe(data);
+        navigate(`/recipes/${recipeId}`);
+        
     };
 
-    fetchRecipe();
-  }, [recipeId]);
+    return handleViewDetail; // Return the function to clean up
+}, [recipeId]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
 
-  if (error) {
-    return <p>Error fetching recipe details: {error}</p>;
-  }
+
+  // useEffect(() => {
+  //   const fetchRecipe = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const data = await fetchRecipeDetails(recipeId);
+  //       setRecipe(data);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching recipe details:', error);
+  //       setError(error.message);
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchRecipe();
+  // }, [recipeId]);
+
+  // if (isLoading) {
+  //   return <p>Loading...</p>;
+  // }
+
+  // if (error) {
+  //   return <p>Error fetching recipe details: {error}</p>;
+  // }
 
   return (
     <div className="container mx-auto py-8">
@@ -50,11 +68,9 @@ const RecipeDetail = () => {
           ))}
         </ul>
         <h2 className="text-xl font-bold mt-4">Instructions</h2>
-        <ol className="list-decimal pl-4 text-gray-700">
-          {recipe.strInstructions.split('\n').map((instruction, index) => (
-            <li key={index}>{instruction.trim()}</li>
-          ))}
-        </ol>
+ 
+          {recipe.strInstructions}
+  
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import time from "../assets/images/time.png"
 import good from "../assets/images/good.png";
-
-const RecipeCard = ({ recipe,onShowDetails }) => {
+import RecipeDetail from "./RecipeDetail";
+const RecipeCard = ({ recipe,handleViewDetail}) => {
      
   return(
 
@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe,onShowDetails }) => {
       </p>
       <button
         className=" bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white px-4 py-2 rounded-md transition ease-in-out delay-100 duration-700 hover:scale-110 "
-        onClick={() => onShowDetails(recipe.idMeal)  }  >
+        onClick={handleViewDetail}  >
           
         View Details
       </button>
