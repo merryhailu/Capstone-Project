@@ -4,7 +4,6 @@ import SearchBar from "./component/SearchBar";
 import RecipeList from "./component/RecipeList";
 import RecipeDetail from "./component/RecipeDetail";
 import { fetchRecipes } from "./api/theMealDBApi";
-import ListItem from "./component/ListItem";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
