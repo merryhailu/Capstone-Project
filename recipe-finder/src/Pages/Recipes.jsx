@@ -4,7 +4,7 @@ import RecipeList from "../component/RecipeList";
 import { useEffect, useState } from "react";
 import { fetchRecipes } from "../api/theMealDBApi";
 
-const Recipe = () => {
+const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,6 +12,7 @@ const Recipe = () => {
   useEffect(() => {
     handleSearch();
   }, []);
+
   const handleSearch = async (searchTerm = "") => {
     try {
       setIsLoading(true);
@@ -36,4 +37,4 @@ const Recipe = () => {
   );
 };
 
-export default Recipe;
+export default Recipes;
