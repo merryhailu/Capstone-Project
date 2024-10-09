@@ -7,6 +7,7 @@ import Footer from "./component/Footer";
 const App = () => {
   return (
     <Router>
+      {/* used for routing between different pages */}
       <div className=" mx-auto ">
         <div className=" text-center font-bold font-serif"></div>
 

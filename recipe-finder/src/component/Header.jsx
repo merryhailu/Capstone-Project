@@ -1,22 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
 
-import { useRef } from "react";
+import { useState } from "react";
 
 const Header = () => {
-  const navRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
-
   return (
     <>
-      <div className=" bg-gradient-to-t from-purple-300 to-pink-200 p-5">
-        <nav
-          ref={navRef}
-          className="flex justify-between items-center md:justify-evenly"
-        >
+      <nav className="bg-gradient-to-t from-purple-300 to-pink-200 shadow-md">
+        <div className="container mx-auto flex justify-between items-center p-4">
           <div>
             <h1 className="font-bold uppercase ">
               <Link to="/" className="hover:text-white">
@@ -24,8 +19,45 @@ const Header = () => {
               </Link>
             </h1>
           </div>
+          <button onClick={toggleMenu} className="md:hidden text-purple-900">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
 
-          <ul className="flex justify-between ">
+          <div className="hidden md:flex space-x-4">
+            <ul className="flex space-x-4">
+              <li className="text-gray-700 font-bold hover:text-white ">
+                <NavLink to="/" className=" pr-5">
+                  Home
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink to="/recipes" className="pr-2 hover:text-white ">
+                  Recipes
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          className={`md:hidden ${
+            isOpen ? "block" : "hidden"
+          } absolute right-0 mt-2 mr-4`}
+        >
+          <ul className="bg-gradient-to-t from-purple-300 to-pink-200 p-4 py-5 ">
             <li className="text-gray-700 font-bold hover:text-white ">
               <NavLink to="/" className=" pr-5">
                 Home
@@ -37,14 +69,8 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <div
-            className=" nav-btn cursor-pointer sm:hidden "
-            onClick={showNavbar}
-          >
-            <FaBars />
-          </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </>
   );
 };
