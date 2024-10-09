@@ -38,7 +38,7 @@ const Header = () => {
             </li>
           </ul>
           <div
-            className="icon nav-btn cursor-pointer sm:hidden "
+            className=" nav-btn cursor-pointer sm:hidden "
             onClick={showNavbar}
           >
             <FaBars />
