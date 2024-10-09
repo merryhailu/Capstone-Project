@@ -5,11 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: { 
+       extend: { 
       fontFamily: {
         Tangerine: ["Tangerine", "serif"],
-        
       },
+      backgroundImage:{
+        'background-image': "url('../src/assets/images/Homepage.jpg')",
+       },
     },
   },
   plugins: [],
