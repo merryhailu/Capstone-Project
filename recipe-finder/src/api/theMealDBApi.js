@@ -7,7 +7,7 @@ export const fetchRecipes = async (searchTerm) => {
     const response = await axios.get(`${BASE_URL}search.php?s=${searchTerm}`);
     return response.data.meals;
   } catch (error) {
-    console.error('Error fetching recipes:', error);
+    console.error('Error fetching recipes: ', error);
     throw error; 
   }
 };
@@ -17,7 +17,7 @@ export const fetchRecipeDetails = async (recipeId) => {
     const response = await axios.get(`${BASE_URL}lookup.php?i=${recipeId}`);
     return response.data.meals[0];
   } catch (error) {
-    console.error('Error fetching recipe details:', error);
+    console.error('Error fetching recipe details: ', error);
     throw error; 
   }
 };
