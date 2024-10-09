@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Router>
       <div className=" mx-auto ">
-        <div className=" text-center font-bold"></div>
+        <div className=" text-center font-bold font-serif"></div>
 
         <Routes>
           <Route path="/" element={<Home />} />
