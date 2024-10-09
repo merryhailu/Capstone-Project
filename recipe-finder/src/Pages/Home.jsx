@@ -12,7 +12,7 @@ const Home = () => {
           </h1>
           <Link to="/recipes">
             <button
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-400 hover:to-purple-400 text-white px-4 py-2 md:px-9 md:py-3 w-full rounded-full
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-400 hover:to-purple-400 text-white px-3 py-2 md:px-9 md:py-3 w-full rounded-full
            transition ease-in-out delay-100 duration-700 hover:scale-110  font-serif md:text-2xl text-center "
             >
               Find Recipes
