@@ -66,7 +66,7 @@ const RecipeDetail = () => {
         className="w-full h-80 object-cover rounded-lg mb-8 shadow-lg shadow-purple-200/40 md:h-100"
       />
 
-      <div className="flex justify-between p-6 mb-8 rounded-md border border-pink-500 text-center">
+      <div className="flex justify-between p-6 mb-7 rounded-md border border-pink-500 text-center">
         <div>
           <h2 className="font-bold md:ml-10">Total Time</h2>
           <p>30 min</p>
