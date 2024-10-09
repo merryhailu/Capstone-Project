@@ -36,7 +36,7 @@ const SearchBar = ({ onSearch }) => {
       </form>
       {showPrompt && (
         <p className="text-red-500 font-semibold text-center ">
-          Please enter the name of the dish you'd like to search for.
+          Please enter the name of the dish you would like to search for.
         </p>
       )}
     </>
