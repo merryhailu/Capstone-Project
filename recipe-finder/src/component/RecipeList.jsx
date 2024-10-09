@@ -8,7 +8,7 @@ const RecipeList = ({ recipes }) => {
           <RecipeCard key={recipe.idMeal} recipe={recipe} />
         ))
       ) : (
-        <div className="text-center font-semibold text-4xl p-6 font-Tangerine sm:grid-cols-1">
+        <div className="text-center font-semibold text-4xl p-6 font-Tangerine">
           <p>
             It seems we could not find any recipes similar to what you were
             looking for.
