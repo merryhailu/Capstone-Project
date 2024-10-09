@@ -12,8 +12,8 @@ const RecipeList = ({ recipes }) => {
           <p>
             It seems we could not find any recipes similar to what you were
             looking for.
-            <p>Lets try a different search our featured recipes.</p>
           </p>
+          <p>Lets try a different search our featured recipes.</p>
         </div>
       )}
     </div>
