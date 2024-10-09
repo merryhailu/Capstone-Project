@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
   return (
-    <div className="bg-gradient-to-r from-purple-200 to-pink-50 rounded-lg shadow-lg shadow-purple-500/40 overflow-hidden  mb-4 mx-6 md:mx-2">
+    <div className="bg-gradient-to-r from-purple-200 to-pink-55 rounded-lg shadow-lg shadow-purple-500/40 overflow-hidden  mb-4 mx-6 md:mx-2">
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
